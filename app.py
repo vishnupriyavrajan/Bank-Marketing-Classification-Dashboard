@@ -158,9 +158,6 @@ with left_col:
 # -------------------------------------------------
 # RIGHT PANEL (UPLOAD + RESULTS)
 # -------------------------------------------------
-# -------------------------------------------------
-# RIGHT PANEL (UPLOAD + RESULTS)
-# -------------------------------------------------
 with right_col:
     st.markdown('<div class="panel-box">', unsafe_allow_html=True)
 
@@ -194,7 +191,8 @@ with right_col:
             df = pd.read_csv(uploaded_file, sep=";")
 
             st.subheader("📄 Dataset Preview")
-            st.dataframe(df, use_container_width=True)
+            # 👇 Show only first 10 rows
+            st.dataframe(df.head(10), use_container_width=True)
 
             if st.button("🚀 Run Evaluation", type="secondary"):
                 with st.spinner("Evaluating model..."):
